@@ -33,3 +33,9 @@ Then /I should see all the movies/ do
   rows = page.all('tbody tr').count
   expect(rows).to eq Movie.count
 end
+
+
+Then(/^the director of "([^"]*)" should be "([^"]*)"$/) do |title, director|
+  movie = Movie.find_by_title(title)
+  expect(movie.director).to eql director
+end
